@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 
+const {resolve} = require('path')
 const parse = require('minimist')
 const heilo = require('../')
 
@@ -8,20 +9,17 @@ const args = parse(process.argv, {
     h: 'help',
     p: 'port',
     i: 'interval',
-    d: 'debug'
+    d: 'debug',
+    f: 'file'
   },
-  boolean: ['h', 'd'],
-  default: {
-    p: undefined,
-    i: undefined
-  }
+  boolean: ['h', 'd']
 })
 
 const help = () => {
   console.log(`
-  Usage: heilo [options] <host>
+  Usage: heilo [options] <hostname>
 
-  host            absolute URL to ping (e.g. https://example.com)
+  hostname        absolute URL to ping (e.g. https://example.com)
   
   Options:
 
@@ -29,6 +27,7 @@ const help = () => {
   -d, --debug                         Debug Mode (log to STDOUT)
   -p PORT, --port=PORT                Port to ping (e.g. 3000)
   -i INTERVAL, --interval=INTERVAL    Ping interval (default to '10m') - refer to 'github.com/zeit/ms' for available values
+  -f FILE, --file=FILE                .js file exporting a function to handle ping error results (e.g. when server is DOWN)
   `);
 }
 
@@ -37,9 +36,9 @@ if (args.h) {
   process.exit(0);
 }
 
-let [,,host] = args._;
+let [,,hostname] = args._
 
-if (!host) {
+if (!hostname) {
   console.log('heilo: Please provide a host to ping')
   help()
   process.exit(1)
@@ -47,18 +46,35 @@ if (!host) {
 
 require('async-to-gen/register')
 
-let url = host;
-if (args.p) {
-  url += `:${args.p}`
+let reporting = err => {
+  console.error('report:', JSON.stringify(err))
 }
 
-// TODO: takes in a function exported from a file if exist
-const handleErrorReport = err => {
-  console.error('report:', err)
+let file = args.f
+if (file) {
+  if ('/' !== file) {
+    file = resolve(process.cwd(), file)
+  }
+
+  try {
+    reporting = require(file);
+    if (reporting && 'object' === typeof reporting) {
+      reporting = reporting.default;
+    }
+
+    if ('function' !== typeof reporting) {
+      console.error(`heilo: "${file}" does not export a function.`)
+      process.exit(1)
+    }
+  } catch (err) {
+    console.error(`heilo: Error when importing ${file}: ${err.stack}`)
+    process.exit(1)
+  }
 }
 
+const url = args.p ? `${hostname}:${args.p}` : `${hostname}`;
 heilo(url, {
   interval: args.i,
   debug: args.d,
-  report: handleErrorReport
+  report: reporting
 })
