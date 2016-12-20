@@ -1,0 +1,32 @@
+{
+  "name": "heilo",
+  "version": "1.0.0",
+  "description": "say heilo to check on your server status regularly",
+  "main": "./dist/index.js",
+  "files": [
+    "dist",
+    "bin"
+  ],
+  "scripts": {
+    "prepublish": "npm run build",
+    "example": "async-node examples/index.js",
+    "build": "mkdir -p dist && async-to-gen lib/index.js > dist/index.js"
+  },
+  "bin": {
+    "heilo": "./bin/heilo"
+  },
+  "author": {
+    "name": "Kawi Xiao",
+    "email": "kawixiao@gmail.com>"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "async-to-gen": "^1.3.0",
+    "isomorphic-fetch": "^2.2.1",
+    "minimist": "^1.2.0",
+    "ms": "^0.7.2"
+  },
+  "engines": {
+    "node": "^7.x.x"
+  }
+}

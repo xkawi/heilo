@@ -1,0 +1,64 @@
+#!/usr/bin/env node
+
+const parse = require('minimist')
+const heilo = require('../')
+
+const args = parse(process.argv, {
+  alias: {
+    h: 'help',
+    p: 'port',
+    i: 'interval',
+    d: 'debug'
+  },
+  boolean: ['h', 'd'],
+  default: {
+    p: undefined,
+    i: undefined
+  }
+})
+
+const help = () => {
+  console.log(`
+  Usage: heilo [options] <host>
+
+  host            absolute URL to ping (e.g. https://example.com)
+  
+  Options:
+
+  -h, --help                          Output usage information
+  -d, --debug                         Debug Mode (log to STDOUT)
+  -p PORT, --port=PORT                Port to ping (e.g. 3000)
+  -i INTERVAL, --interval=INTERVAL    Ping interval (default to '10m') - refer to 'github.com/zeit/ms' for available values
+  `);
+}
+
+if (args.h) {
+  help();
+  process.exit(0);
+}
+
+let [,,host] = args._;
+
+if (!host) {
+  console.log('heilo: Please provide a host to ping')
+  help()
+  process.exit(1)
+}
+
+require('async-to-gen/register')
+
+let url = host;
+if (args.p) {
+  url += `:${args.p}`
+}
+
+// TODO: takes in a function exported from a file if exist
+const handleErrorReport = err => {
+  console.error('report:', err)
+}
+
+heilo(url, {
+  interval: args.i,
+  debug: args.d,
+  report: handleErrorReport
+})
