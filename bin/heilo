@@ -27,7 +27,7 @@ const help = () => {
   -d, --debug                         Debug Mode (log to STDOUT)
   -p PORT, --port=PORT                Port to ping (e.g. 3000)
   -i INTERVAL, --interval=INTERVAL    Ping interval (default to '10m') - refer to 'github.com/zeit/ms' for available values
-  -f FILE, --file=FILE                .js file exporting a function to handle ping error results (e.g. when server is DOWN)
+  -f FILE, --file=FILE                .js file exporting a function to handle ping results (e.g. send notification when server is DOWN)
   `);
 }
 
