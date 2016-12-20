@@ -15,11 +15,30 @@
   "bin": {
     "heilo": "./bin/heilo"
   },
+  "repository": "xkawi/heilo",
+  "keywords": [
+    "heilo",
+    "server",
+    "health",
+    "checker",
+    "healthchecker",
+    "ping",
+    "status",
+    "regularly",
+    "interval",
+    "statuspage",
+    "pagechecker",
+    "heartbeat"
+  ],
   "author": {
     "name": "Kawi Xiao",
     "email": "kawixiao@gmail.com>"
   },
   "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/xkawi/heilo"
+  },
+  "homepage": "https://github.com/xkawi/heilo#readme",
   "dependencies": {
     "async-to-gen": "^1.3.0",
     "isomorphic-fetch": "^2.2.1",
