@@ -1,9 +1,17 @@
 /**
  * Usage:
- * heilo <host/url> -r examples/reporting.js
+ * heilo <absolute_url_path> -f examples/reporting.js
  */
-module.exports = (error) => {
+module.exports = ({
+    statusCode,
+    message,
+    type,
+    errorType,
+    originalError,
+    timestamp
+  }) => {
+  const formattedDate = new Date(timestamp).toLocaleString();
   console.log(`
-  SERVER DOWN: ${JSON.stringify(error)}
+  ${type} - - [${formattedDate}] "${statusCode} - ${message}"
   `)
 }
