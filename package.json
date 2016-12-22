@@ -1,6 +1,6 @@
 {
   "name": "heilo",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "server status monitoring tool made simple",
   "main": "./dist/index.js",
   "files": [
