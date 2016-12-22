@@ -1,5 +1,8 @@
 _**heilo**, is your server up or down?_
 
+[![Build Status](https://travis-ci.org/xkawi/heilo.svg?branch=master)](https://travis-ci.org/xkawi/heilo)
+[![Standard - JavaScript Style Guide](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com/)
+
 # heilo there
 
 If you are looking for a NodeJS-based server status monitoring tool, `heilo` is for you. It is lightweight, simple to use, and has clean interface. It can be used programmatically as an npm `module`, or `cli` tool.

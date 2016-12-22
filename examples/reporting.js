@@ -10,7 +10,7 @@ module.exports = ({
     originalError,
     timestamp
   }) => {
-  const formattedDate = new Date(timestamp).toLocaleString();
+  const formattedDate = new Date(timestamp).toLocaleString()
   console.log(`
   ${type} - - [${formattedDate}] "${statusCode} - ${message}"
   `)
