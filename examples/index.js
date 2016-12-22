@@ -2,7 +2,7 @@
 
 const heilo = require('../lib')
 
-heilo('http://example.com', {
+heilo('http://localhost', {
   interval: '5m',
   debug: true,
   report: error => {
