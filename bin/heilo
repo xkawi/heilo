@@ -19,7 +19,7 @@ const help = () => {
   console.log(`
   Usage: heilo [options] <hostname>
 
-  hostname        absolute URL to ping (e.g. https://example.com)
+  hostname        absolute URL path to ping (e.g. https://example.com)
   
   Options:
 

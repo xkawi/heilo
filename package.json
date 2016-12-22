@@ -1,7 +1,7 @@
 {
   "name": "heilo",
   "version": "1.0.0",
-  "description": "say heilo to check on your server status regularly",
+  "description": "server status monitoring tool made simple",
   "main": "./dist/index.js",
   "files": [
     "dist",
