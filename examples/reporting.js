@@ -3,6 +3,7 @@
  * heilo <absolute_url_path> -f examples/reporting.js
  */
 module.exports = ({
+    hostname,
     statusCode,
     message,
     type,
@@ -12,6 +13,6 @@ module.exports = ({
   }) => {
   const formattedDate = new Date(timestamp).toLocaleString()
   console.log(`
-  ${type} - - [${formattedDate}] "${statusCode} - ${message}"
+  ${type} - - [${formattedDate}] - [${hostname}] "${statusCode} - ${message}"
   `)
 }
