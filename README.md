@@ -9,7 +9,7 @@ If you are looking for a NodeJS-based server status monitoring tool, `heilo` is 
 
 Default behaviour will ping a host every 10 minutes (configurable) to check if it is UP, UP with Error or DOWN.
 
-NOTE: `heilo` does not come with any notification/reporting functionality. Though `heilo` provides an interface for you to write your own notification/reporting function.
+NOTE: `heilo` does not come with any notification/reporting functionality. Though `heilo` provides an interface for you to write your own notification/reporting function. Here is an example on how you can write a simple email notification system using `nodemailer` and deploy to [Now](https://zeit.co/now) - [heilo-mail](https://github.com/xkawi/heilo/tree/master/examples/heilo-mail).
 
 ## Usage
 
