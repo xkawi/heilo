@@ -1,0 +1,14 @@
+{
+  "name": "heilo-mail",
+  "version": "0.0.1",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "engines": {
+    "node": ">=6"
+  },
+  "dependencies": {
+    "heilo": "^1.0.3",
+    "nodemailer": "^2.7.0"
+  }
+}
