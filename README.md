@@ -31,7 +31,8 @@ heilo('https://localhost', {
   interval: '10m',        // ping interval
   stopLooping = false,    // stop pinging, useful if you want to control the start/stop manually
   report = (error) => {}, // function to report any error (e.g. send email when server down)
-  debug = false           // log every ping result to STDOUT if set to true
+  debug = false,          // log every ping result to STDOUT if set to true,
+  fetchOptions = { method: 'GET' } // options passed to fetch(url, fetchOptions)
 })
 ```
 
