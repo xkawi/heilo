@@ -42,7 +42,7 @@
   "homepage": "https://github.com/xkawi/heilo#readme",
   "dependencies": {
     "async-to-gen": "^1.3.0",
-    "isomorphic-fetch": "^2.2.1",
+    "isomorphic-fetch": "^2.6.1",
     "minimist": "^1.2.0",
     "ms": "^0.7.2"
   },
