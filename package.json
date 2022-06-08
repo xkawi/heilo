@@ -9,7 +9,7 @@
   ],
   "scripts": {
     "prepublish": "npm run build",
-    "example": "async-node examples/index.js",
+    "example": "node examples/index.js",
     "build": "mkdir -p dist && async-to-gen lib/index.js > dist/index.js",
     "test": "standard"
   },
@@ -42,8 +42,8 @@
   "homepage": "https://github.com/xkawi/heilo#readme",
   "dependencies": {
     "async-to-gen": "^1.3.0",
-    "isomorphic-fetch": "^2.6.1",
-    "minimist": "^1.2.0",
+    "isomorphic-fetch": "^3.0.0",
+    "minimist": "^1.2.6",
     "ms": "^0.7.2"
   },
   "engines": {
