@@ -50,6 +50,6 @@
     "node": ">=6"
   },
   "devDependencies": {
-    "standard": "^8.6.0"
+    "standard": "^17.1.2"
   }
 }
